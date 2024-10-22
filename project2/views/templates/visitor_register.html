@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>방문 신청</title>
+  <style>
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    button {
+      padding: 0.7rem 1.5rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<h1>방문 신청</h1>
+<form action="/visitor-register" method="post" enctype="application/x-www-form-urlencoded">
+  <div class="form-group">
+    <label for="username">이름 *</label>
+    <input type="text" id="username" name="name" placeholder="이름을 입력하세요" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">이메일 *</label>
+    <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">전화번호 *</label>
+    <input type="tel" id="phone" name="phone" placeholder="전화번호를 입력하세요" required>
+  </div>
+
+  <div class="form-group">
+    <label for="aname">담당자 이름</label>
+    <input type="text" id="aname" name="aname" placeholder="담당자 이름을 입력하세요">
+  </div>
+
+  <div class="form-group">
+    <label for="job">담당자 부서</label>
+    <input type="text" id="job" name="job" placeholder="담당자 부서를 입력하세요">
+  </div>
+
+  <div class="form-group">
+    <label for="ob">방문 목적 *</label>
+    <input type="text" id="ob" name="ob" placeholder="방문 목적을 입력하세요" required>
+  </div>
+
+  <form action="/user-dashboard/" method="get">
+    <button type="submit">방문 신청</button>
+  </form>
+</form>
+</body>
+</html>

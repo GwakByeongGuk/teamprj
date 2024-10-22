@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>방문자 통계</title>
+</head>
+<body>
+<h1>방문자 통계</h1>
+
+<p>총 방문자 횟수: {{ total_visitors }}</p>
+<p>평균 방문 시간: {{ avg_visit_duration | round(2) }} 분</p>
+
+<h3>요일별 방문자 수</h3>
+<img src="{{ weekday_graph }}" alt="요일별 방문자 수 그래프">
+
+<h3>시간대별 방문자 수</h3>
+<img src="{{ hour_graph }}" alt="시간대별 방문자 수 그래프">
+
+</body>
+</html>

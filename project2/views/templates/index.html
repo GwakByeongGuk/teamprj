@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방문자 출입 페이지</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .half {
+            width: 48%;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            background-color: #f77d1a;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #e36b10;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        .info-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .info-links a {
+            color: #f77d1a;
+            text-decoration: none;
+        }
+        .info-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 관리자 로그인 -->
+    <div class="half">
+        <h2>관리자 로그인</h2>
+        <form action="/admin-login" method="post">
+            <label for="username">아이디:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">로그인</button>
+
+        </form>
+    </div>
+
+    <!-- 방문객 등록 -->
+    <div class="half">
+        <h2>방문객 등록</h2>
+        <form action="/approve-login" method="post">
+            <label for="username2">아이디:</label>
+            <input type="text" id="username2" name="username2" required>
+
+            <label for="password2">비밀번호:</label>
+            <input type="password" id="password2" name="password2" required>
+
+            <button type="submit">방문 신청 페이지로 이동</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

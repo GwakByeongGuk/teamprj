@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모든 방문자 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>모든 방문자 목록</h1>
+<table>
+    <thead>
+    <tr>
+        <th>이름</th>
+        <th>이메일</th>
+        <th>전화번호</th>
+        <th>방문 목적</th>
+        <th>신청 날짜</th>
+        <th>승인 상태</th>
+        <th>퇴입</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for visitor in visitors %}
+    <tr id="visitor-{{ visitor.uno }}">
+        <td>{{ visitor.name }}</td>
+        <td>{{ visitor.email }}</td>
+        <td>{{ visitor.phone }}</td>
+        <td>{{ visitor.ob }}</td>
+        <td>{{ visitor.regdate.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td>{{ visitor.status.value }}</td>
+        <td id="exit-cell-{{ visitor.uno }}">
+            {% if visitor.status.value == "승인됨" %}
+            <button onclick="logExit('{{ visitor.uno }}')">퇴입</button>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<form action="/visitor-register" method="get">
+    <button type="submit">새 방문자 등록</button>
+</form>
+
+<script>
+    function logExit(uno) {
+        fetch(`/exit/${uno}`, {
+            method: "POST"
+        }).then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById(`visitor-status-${uno}`).innerHTML = '퇴입';
+                    document.getElementById(`exit-cell-${uno}`).innerHTML = '퇴입 완료';
+                    alert("퇴입되었습니다.");
+                } else {
+                    alert(data.message || "퇴입에 실패했습니다.");
+                }
+            }).catch(error => {
+            alert("서버와의 통신 중 문제가 발생했습니다.");
+            console.error("Error:", error);
+        });
+    }
+</script>
+
+
+
+</body>
+</html>
